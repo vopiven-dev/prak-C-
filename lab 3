@@ -1,0 +1,82 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+    // Встановлення локалі для коректного виводу в консоль
+    setlocale(LC_ALL, "Ukrainian");
+
+    
+    // ЗАДАЧА 1: If36 Кусочно-задана функція
+  
+    cout << "=== ЗАДАЧА 1: If36 ===" << endl;
+    double x_if36;
+    cout << "Введіть значення x для функції t(x): ";
+    cin >> x_if36;
+
+    int t;
+    if (x_if36 <= -1) {
+        t = static_cast<int>(x_if36 - 2);
+    }
+    else if (x_if36 > -1 && x_if36 < 2) {
+        t = static_cast<int>(x_if36 * x_if36 + x_if36);
+    }
+    else {
+        t = 6;
+    }
+
+    cout << "Результат t(x) = " << t << endl;
+    cout << endl;
+
+    
+    // ЗАДАЧА 2: Варіант 33 (Геометрична область)
+    
+    cout << "=== ЗАДАЧА 2: Варіант 33 ===" << endl;
+    double r_v33, x_v33, y_v33;
+    cout << "Введіть радіус r (r > 0): ";
+    cin >> r_v33;
+    cout << "Введіть координати точки для Варіанту 33 (x y через пробіл): ";
+    cin >> x_v33 >> y_v33;
+
+    bool in_upper_part = (x_v33 >= 0) && (y_v33 >= x_v33) && (x_v33 * x_v33 + y_v33 * y_v33 <= r_v33 * r_v33);
+    bool in_lower_part = (x_v33 >= 0) && (y_v33 <= 0) && (y_v33 >= 2 * x_v33 - r_v33);
+
+    if (in_upper_part || in_lower_part) {
+        cout << "Точка (" << x_v33 << ", " << y_v33 << ") ПОТРАПЛЯЄ в область (варіант 33)." << endl;
+    }
+    else {
+        cout << "Точка (" << x_v33 << ", " << y_v33 << ") НЕ потрапляє в область (варіант 33)." << endl;
+    }
+    cout << endl;
+
+    
+    // ЗАДАЧА 3: Варіант 5 (Геометрична область)
+   
+    cout << "=== ЗАДАЧА 3: Варіант 5 ===" << endl;
+    double r1_v5, a_v5, x_v5, y_v5;
+    cout << "Введіть радіус внутрішніх кіл r1: ";
+    cin >> r1_v5;
+    cout << "Введіть відстань від центру a: ";
+    cin >> a_v5;
+    cout << "Введіть координати точки для Варіанту 5 (x y через пробіл): ";
+    cin >> x_v5 >> y_v5;
+
+    double offset = a_v5 / sqrt(2.0);
+    double cx1 = -offset;
+    double cy1 = offset;
+    double cx2 = offset;
+    double cy2 = -offset;
+
+    bool in_circle1 = ((x_v5 - cx1) * (x_v5 - cx1) + (y_v5 - cy1) * (y_v5 - cy1)) <= r1_v5 * r1_v5;
+    bool in_circle2 = ((x_v5 - cx2) * (x_v5 - cx2) + (y_v5 - cy2) * (y_v5 - cy2)) <= r1_v5 * r1_v5;
+
+    if (in_circle1 || in_circle2) {
+        cout << "Точка (" << x_v5 << ", " << y_v5 << ") ПОТРАПЛЯЄ в область (варіант 5)." << endl;
+    }
+    else {
+        cout << "Точка (" << x_v5 << ", " << y_v5 << ") НЕ потрапляє в область (варіант 5)." << endl;
+    }
+
+    return 0;
+}
